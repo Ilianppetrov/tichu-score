@@ -13,6 +13,7 @@ import { useTichuGameContext } from '@/contexts/TichuGameContext'
 import { RotateCcw, Undo2 } from 'lucide-react'
 
 export function GameControls() {
+  
   const { gameState, resetGame, undoLastRound } = useTichuGameContext()
   const [showResetDialog, setShowResetDialog] = useState(false)
 
