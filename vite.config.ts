@@ -7,8 +7,8 @@ import tailwindcss from '@tailwindcss/vite'
 import { tanstackRouter } from '@tanstack/router-plugin/vite'
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: 'tichu-score',
+export default defineConfig(({ command }) => ({
+  base: process.env.GITHUB_PAGES_BASE || (command === 'serve' ? '/' : '/tichu-score/'),
   plugins: [
     devtools(),
     tanstackRouter({
@@ -23,4 +23,4 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-})
+}))
