@@ -57,6 +57,16 @@ export function RoundForm() {
   const handlePlayerTichuSuccess = (playerIndex: number, success: boolean) => {
     const newSuccess = new Map(playerTichuSuccess)
     newSuccess.set(playerIndex, success)
+    
+    // If marking one Tichu as successful, mark all others as failed
+    if (success === true) {
+      for (const [otherPlayerIndex] of playerTichuCalls.entries()) {
+        if (otherPlayerIndex !== playerIndex) {
+          newSuccess.set(otherPlayerIndex, false)
+        }
+      }
+    }
+    
     setPlayerTichuSuccess(newSuccess)
   }
 

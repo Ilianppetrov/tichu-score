@@ -8,7 +8,7 @@ import { tanstackRouter } from '@tanstack/router-plugin/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
-  base: "/tichu-score/",
+  // base: "/tichu-score/",
   plugins: [
     devtools(),
     tanstackRouter({
