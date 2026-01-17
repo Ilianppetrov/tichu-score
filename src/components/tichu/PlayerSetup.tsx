@@ -1,13 +1,13 @@
 import { useState } from 'react'
+import type { Player } from '@/types/tichu'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import type { Player } from '@/types/tichu'
+import { Card, CardContent } from '@/components/ui/card'
 import { Team } from '@/types/tichu'
 
 interface PlayerSetupProps {
-  onStart: (players: Player[]) => void
+  onStart: (players: Array<Player>) => void
 }
 
 export function PlayerSetup({ onStart }: PlayerSetupProps) {
@@ -21,7 +21,7 @@ export function PlayerSetup({ onStart }: PlayerSetupProps) {
 
     // Arrange players in seating order around the table (alternating teams)
     // Player 1 (Team A) starts as dealer, then rotates to the right
-    const players: Player[] = [
+    const players: Array<Player> = [
       { name: teamAPlayer1.trim(), team: Team.TeamA }, // Position 1 - starts as dealer
       { name: teamBPlayer1.trim(), team: Team.TeamB }, // Position 2 - to the right
       { name: teamAPlayer2.trim(), team: Team.TeamA }, // Position 3 - to the right

@@ -1,7 +1,7 @@
-import { Card, CardContent } from '@/components/ui/card'
+
+import { Trophy, Users } from 'lucide-react'
 import { useTichuGameContext } from '@/contexts/TichuGameContext'
 import { Team } from '@/types/tichu'
-import { Trophy, Users } from 'lucide-react'
 
 export function ScoreDisplay() {
   const { gameState, getCurrentDealer, getTeamPlayers } = useTichuGameContext()
