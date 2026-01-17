@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
 import {
   Dialog,
   DialogContent,
@@ -10,10 +9,9 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import { useTichuGameContext } from '@/contexts/TichuGameContext'
-import { RotateCcw, Undo2 } from 'lucide-react'
 
 export function GameControls() {
-  
+
   const { gameState, resetGame, undoLastRound } = useTichuGameContext()
   const [showResetDialog, setShowResetDialog] = useState(false)
 

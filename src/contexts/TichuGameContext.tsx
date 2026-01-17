@@ -1,4 +1,6 @@
-import { createContext, useContext, ReactNode } from 'react'
+import { createContext, useContext } from 'react'
+import type { ReactNode } from 'react'
+
 import { useTichuGame } from '@/hooks/useTichuGame'
 
 type TichuGameContextType = ReturnType<typeof useTichuGame>

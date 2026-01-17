@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import type { GameState, Player, RoundResult } from '@/types/tichu'
 import { Team } from '@/types/tichu'
 
@@ -51,7 +51,7 @@ export function useTichuGame() {
     }
   }, [gameState, isHydrated])
 
-  const initializeGame = useCallback((players: Player[]) => {
+  const initializeGame = useCallback((players: Array<Player>) => {
     if (players.length !== 4) {
       throw new Error('Must have exactly 4 players')
     }
@@ -231,7 +231,7 @@ export function useTichuGame() {
   }, [gameState.players, gameState.currentDealerIndex])
 
   const getTeamPlayers = useCallback(
-    (team: Team): Player[] => {
+    (team: Team): Array<Player> => {
       return gameState.players.filter((p) => p.team === team)
     },
     [gameState.players],
