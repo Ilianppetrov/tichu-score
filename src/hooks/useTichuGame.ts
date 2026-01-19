@@ -82,7 +82,18 @@ export function useTichuGame() {
       let teamAScore = roundResult.teamAScore
       let teamBScore = roundResult.teamBScore
 
-      // Apply Tichu bonuses/penalties per player
+      // Handle double victory first (sets base scores to 200/0)
+      if (roundResult.doubleVictory && roundResult.doubleVictoryTeam) {
+        if (roundResult.doubleVictoryTeam === Team.TeamA) {
+          teamAScore = 200
+          teamBScore = 0
+        } else {
+          teamAScore = 0
+          teamBScore = 200
+        }
+      }
+
+      // Apply Tichu bonuses/penalties per player (on top of double victory if applicable)
       for (const playerTichu of roundResult.playerTichuCalls) {
         if (playerTichu.call !== 'None' && playerTichu.success !== null) {
           const player = gameState.players[playerTichu.playerIndex]
@@ -104,17 +115,6 @@ export function useTichuGame() {
               teamBScore -= tichuPoints
             }
           }
-        }
-      }
-
-      // Handle double victory
-      if (roundResult.doubleVictory && roundResult.doubleVictoryTeam) {
-        if (roundResult.doubleVictoryTeam === Team.TeamA) {
-          teamAScore = 200
-          teamBScore = 0
-        } else {
-          teamAScore = 0
-          teamBScore = 200
         }
       }
 
@@ -170,7 +170,18 @@ export function useTichuGame() {
       let roundTeamAScore = round.teamAScore
       let roundTeamBScore = round.teamBScore
 
-      // Apply Tichu bonuses/penalties per player
+      // Handle double victory first (sets base scores to 200/0)
+      if (round.doubleVictory && round.doubleVictoryTeam) {
+        if (round.doubleVictoryTeam === Team.TeamA) {
+          roundTeamAScore = 200
+          roundTeamBScore = 0
+        } else {
+          roundTeamAScore = 0
+          roundTeamBScore = 200
+        }
+      }
+
+      // Apply Tichu bonuses/penalties per player (on top of double victory if applicable)
       for (const playerTichu of round.playerTichuCalls) {
         if (playerTichu.call !== 'None' && playerTichu.success !== null) {
           const player = gameState.players[playerTichu.playerIndex]
@@ -190,16 +201,6 @@ export function useTichuGame() {
               roundTeamBScore -= tichuPoints
             }
           }
-        }
-      }
-
-      if (round.doubleVictory && round.doubleVictoryTeam) {
-        if (round.doubleVictoryTeam === Team.TeamA) {
-          roundTeamAScore = 200
-          roundTeamBScore = 0
-        } else {
-          roundTeamAScore = 0
-          roundTeamBScore = 200
         }
       }
 
